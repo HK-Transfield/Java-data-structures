@@ -19,7 +19,7 @@ public class SList {
         /**
          * Constructor.
          * 
-         * @param s The data to add to the SNode
+         * @param s The data the SNode will contain.
          */
         public SNode(String s) {
             this.key = s;
@@ -44,10 +44,11 @@ public class SList {
      * Checks if the linked contains a node with a string parameter.
      * 
      * @param s The string 
+     *
      * @return If the linked list contains node whose string value equals s
      */
     public boolean has(String s) {
-        SNode curr = head;
+        SNode curr = head;  // start at the beginning of the Slist
         boolean hasString = false;
 
         // loop through every node, starting from head node
@@ -77,31 +78,34 @@ public class SList {
      */
     public void remove(String s) {
         
-        SNode curr = head;     // set current SNode to node after the head
-        SNode prev;
+        // declare SNode variables
+        SNode curr = head;     // start at head of SList
+        SNode prev;            // store previous SNode 
 
         // check if there is a head node in the list
         if(curr == null)
             return;
-        else if (curr != null) {
+        else {
 
             // check if s is in the head
             if(s == curr.key) {
                 head = head.next;
                 return;
+                
             } else {
-                curr = head.next;
+                curr = head.next;     // move to next SNode in list
                 prev = head;          // set previous SNode to head
 
-                // loop through SList until we either reach
+                // loop through SList until we reach the end or find match
                 while(curr != null && !curr.key.equals(s)) {
                     prev = curr;
                     curr = curr.next;
 
-                    // if we reach end of SList without finding s, return
+                    // if we reach end of SList without a match, return
                     if(curr == null)
                         return;
                 }
+                // remove current from the SList
                 prev.next = curr.next;
             }     
         } 
@@ -110,10 +114,10 @@ public class SList {
     /**
      * Counts the total number of nodes contained within a linked SList instance.
      * 
-     * @return An integer, representing the number of nodes in a linked list.
+     * @return The number of nodes counted in a linked list.
      */
     public int length() {
-        SNode curr = head;
+        SNode curr = head;  // start at the head of the SList
         int count = 0;
         
         // loop though every SNode in list. Add to counter
@@ -129,7 +133,7 @@ public class SList {
     /**
      * Checks if the SList is empty.
      * 
-     * @return A boolean indicating if the SList is empty.
+     * @return A boolean value indicating if the SList is empty.
      */
     public boolean isEmpty() {
         return length() == 0 ? true : false;
@@ -139,7 +143,7 @@ public class SList {
     * Print each node in the linked SList to the output stream.
     */
     public void dump() {
-        SNode curr = head;
+        SNode curr = head;  // start at the head of the SList
 
         // check if the list is empty first
         if(isEmpty())
@@ -148,7 +152,7 @@ public class SList {
             // loop throught each SNode until it reaches the end
             while(curr != null) {
                 // print the String key value of the SNode to the console
-                System.out.println(curr.key + ' ');
+                System.out.println(curr.key);
 
                 // move to next SNode
                 curr = curr.next;
@@ -157,27 +161,33 @@ public class SList {
     }
 
     /**
-    * Inserts a new Snode into the list 
-    * 
-    * @param s The string value to be inserted into the
+    * Inserts a new Snode into the list based on the 
+    * unicode value of the string in a descending
+    * order.
+    *
+    * @param s The string value to be inserted into the SList
     */
     public void insert(String s){
-        SNode n = new SNode(s);
-        SNode curr = head;
-        SNode prev = null;
         
-        // as long as there is 
+        // declare SNode variables
+        SNode n = new SNode(s); // create a new SNode with the data
+        SNode curr = head;      // start at the head of the SList
+        SNode prev = null;      // set previous SNode to current
+        
+        // loop through the list and compare key value with s value
         while(curr != null && n.key.compareTo(curr.key) > 0){
             prev = curr;
             curr = curr.next;
         }
 
-        // insert SNode at head if theres no node before it
         if(prev == null){
+            // insert SNode at head if theres no node before it
             head = n;
         }else{
+            // insert new SNode in front of previous
             prev.next = n;
         }
+        // insert current SNode in front of new SNode
         n.next = curr;
     }
 }
