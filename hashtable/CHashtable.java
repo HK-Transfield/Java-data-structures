@@ -3,7 +3,7 @@
  * maps a CKey object to a CData object. It computes a index location via
  * a hash function using the CKey object.
  * 
- * @author Harmon Transfield
+ * @author HK Transfield
  */
 public class CHashtable implements CHashInterface {
     private CData[] table;  // an array of CData references (the hash table)
