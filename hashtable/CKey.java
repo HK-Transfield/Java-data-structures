@@ -3,7 +3,7 @@
  * keystring passed from the CData, it generates a hashcode 
  * integer.
  * 
- * @author Harmon Transfield
+ * @author HK Transfield
  */
 public class CKey {
     private String keystring;
