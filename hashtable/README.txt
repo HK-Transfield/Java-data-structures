@@ -1,5 +1,5 @@
 ====Hashing Techniques=====
-@Harmon Transfield
+@HK Transfield
 
 
 ----CKey Hashcode----
