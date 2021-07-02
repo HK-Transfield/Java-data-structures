@@ -4,7 +4,7 @@
  * which is used to calculate an index location in a CHashtable and 
  * uniquely identify it. 
  * 
- * @author Harmon Transfield
+ * @author HK Transfield
  */
 public class CData {
     private String name;
